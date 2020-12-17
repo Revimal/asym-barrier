@@ -2,8 +2,8 @@
 
 # asym-barrier
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Language: C11](https://img.shields.io/badge/Language-C11-blue.svg)
-![Header-only library](https://img.shields.io/badge/Header--only_library-green.svg)
+[![Language: C11](https://img.shields.io/badge/Language-C11-blue.svg)](https://www.iso.org/standard/57853.html)
+[![Header-only library](https://img.shields.io/badge/Header--only_library-green.svg)](https://en.wikipedia.org/wiki/Header-only)
 
 ## What is the 'asym-barrier'?
 The 'asym-barrier' is a synchrounous method that is consisted of a single updater and multiple waiters.
@@ -49,6 +49,8 @@ In the end, we can consider all threads have synchronized to modifications made 
 ## How to use it?
 #### Main Function Example
 ```c
+#include "asym_barrier.h"
+
 #define WAITER_THREAD_NUM 4
 
 int main(int argc, char *argv[])
@@ -65,6 +67,8 @@ int main(int argc, char *argv[])
 
 #### Updater Function Example
 ```c
+#include "asym_barrier.h"
+
 void updater_func(void *arg)
 {
 	asym_barrier_t *abptr = arg;
@@ -82,6 +86,8 @@ void updater_func(void *arg)
 
 #### Waiter Function Example
 ```c
+#include "asym_barrier.h"
+
 void waiter_func(void *arg)
 {
 	asym_barrier_t *abprt = arg;
