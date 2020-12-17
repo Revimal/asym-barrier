@@ -22,17 +22,17 @@ The 'asym-barrier' is a synchrounous method that is consisted of a single update
 0. All actions of the 'asym-barrier' are triggered by calling the 'update-function' in the updater thread; we call this 'the period has updated'.
 1. If 'the period has updated', the updater increases the 'waiting-count' as the number of waiter threads.
 2. The updater thread spins until the 'waiting-count' being 0.
-3. Each waiter threads (or any kinds of concurrent workers) that confront a 'barrier-point' after the updater thread increased the 'waiting-count' decreases the 'waiting-count' by 1.
+3. Each waiter threads that confront a 'barrier-point' after the updater thread increased the 'waiting-count' decreases the 'waiting-count' by 1.
 4. All waiter threads that performed the increment spins until the 'waiting-count' being 0.
-5. When all waiter threads met their 'barrier-point', so the 'waiting-count' being 0, all threads are escaped from spinning; we call these 'the period has recognized'.
+5. When all waiter threads met their 'barrier-point', so the 'waiting-count' being 0, all threads are escaped from spinning; we call this 'the period has recognized'.
 6. The updater thread continues its series of processing until the first 'commit-point' after the place where the 'update-function' is invoked.
 7. Concurrently, each waiter threads increase the 'synced-count' by 1, then spinning until the 'synced-count' being 0.
 8. The updater thread spins until the 'synced-count' equals the number of waiter threads when it reaches a 'commit-point'.
 9. If the updater thread satisfied the condition to break the spinning, it sets the 'synced-count' as the 0.
-10. The increment action of the 'statement 7' makes the updater thread escapes from 'statement 8' to advance to 'statement 9'.
+10. The increment action of the 'statement 7' makes the updater thread advance from 'statement 8' to 'statement 9'.
 11. The zeroing action of 'statement 9' makes the waiter thread escapes from spinning scribed in 'statement 7'.
 12. By the above two interactions, all the threads are escaped from spinning.
-13. At this point, both the 'waiting-count' and 'synced-count' restore as 0, and all threads start continuing their control flow; we call this 'the period has committed'.
+13. At this point, both the 'waiting-count' and 'synced-count' is restored as 0, and all threads start continuing their control flow; we call this 'the period has committed'.
 
 In the end, we can consider all threads have synchronized to modifications made by the updater thread during the time between 'the period has recognized' and 'the period has committed'.
 
