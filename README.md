@@ -101,15 +101,16 @@ This library uses a C11 standard feature named 'ISO/IEC 9899:2011 Atomics' so mo
 **DISCLAIMER: Never tested on 32-bit environments.**
 
 #### List of architectures that support efficient CPU relaxing
-x86 (since Pentium4): defines `ASYM_BARRIER_ARCH_X86` before you include the library header.
-ARM (since ARMv6K): define `ASYM_BARRIER_ARCH_ARM` before you include the library header.
-PPC: define `ASYM_BARRIER_ARCH_PPC` before you include the library header.
-MIPS: define `ASYM_BARRIER_ARCH_MIPS` before you include the library header.
+* x86 (since Pentium4): defines `ASYM_BARRIER_ARCH_X86` before you include the library header.
+* ARM (since ARMv6K): define `ASYM_BARRIER_ARCH_ARM` before you include the library header.
+* PPC: define `ASYM_BARRIER_ARCH_PPC` before you include the library header.
+* MIPS: define `ASYM_BARRIER_ARCH_MIPS` before you include the library header.
 
 ---
 
 ## Is it works well?
 You can test this library by compiling and executing the 'test_barrier.c'.
+
 It uses the pthread for the MT-safety testing so please pass the appropriate compile flag which valid to the compiler you use.
 
 ---
