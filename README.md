@@ -57,11 +57,11 @@ int main(int argc, char *argv[])
 {
 	asym_barrier_t abobj;
 
-    asym_barrier_init(&abobj, WAITER_THREAD_NUM);
+	asym_barrier_init(&abobj, WAITER_THREAD_NUM);
 
-    /* spawn threads... */
+	/* spawn threads... */
 
-    return 0;
+	return 0;
 }
 ```
 
@@ -73,14 +73,14 @@ void updater_func(void *arg)
 {
 	asym_barrier_t *abptr = arg;
 
-    while (1) {
-    	/* synchornized behavior (refer comments on 'asym_barrier_update()') */
-    	asym_barrier_check(abptr, 1);
-    	/* do somthing... */
-        asym_barrier_commit(abptr);
-    }
+	while (1) {
+		/* synchornized behavior (refer comments on 'asym_barrier_update()') */
+		asym_barrier_check(abptr, 1);
+		/* do somthing... */
+		asym_barrier_commit(abptr);
+	}
 
-    return;
+	return;
 }
 ```
 
@@ -92,10 +92,10 @@ void waiter_func(void *arg)
 {
 	asym_barrier_t *abprt = arg;
 
-    while (1) {
-    	asym_barrier_check(abptr);
-        /* do something... */
-    }
+	while (1) {
+		asym_barrier_check(abptr);
+		/* do something... */
+	}
 }
 ```
 

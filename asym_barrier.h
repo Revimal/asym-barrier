@@ -83,7 +83,7 @@ static inline void asym_barrier_init(asym_barrier_t *asymb, uint64_t waiters)
  * @param asymb
  *	The pointer to an asymmetric barrier object.
  * @param synced
- *	If not 0, the updater thread does not wait for 'the period has recognized'.
+ *	If 0, the updater thread does not wait for 'the period has recognized'.
  */
 static inline void asym_barrier_update(asym_barrier_t *asymb, unsigned synced)
 {
