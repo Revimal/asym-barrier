@@ -16,8 +16,8 @@
 #define ASYM_BARRIER_CACHE_SIZE 64
 
 #if defined(_MSC_VER)
-	#define ASYM_BARRIER_COMP_LIKELY(x)
-	#define ASYM_BARRIER_COMP_UNLIKELY(x)
+	#define ASYM_BARRIER_COMP_LIKELY(x) !!(x)
+	#define ASYM_BARRIER_COMP_UNLIKELY(x) !!(x)
 	#define ASYM_BARRIER_ARCH_RELAX() YieldProcessor()
 	#define ASYM_BARRIER_CACHE_ALIGNED __declspec(align(ASYM_BARRIER_CACHE_SIZE))
 #elif (defined(__GNUC__) || defined(__clang__))
@@ -39,8 +39,8 @@
 	#endif
 	#define ASYM_BARRIER_CACHE_ALIGNED __attribute__((aligned(ASYM_BARRIER_CACHE_SIZE)))
 #else
-	#define ASYM_BARRIER_COMP_LIKELY(x)
-	#define ASYM_BARRIER_COMP_UNLIKELY(x)
+	#define ASYM_BARRIER_COMP_LIKELY(x) !!(x)
+	#define ASYM_BARRIER_COMP_UNLIKELY(x) !!(x)
 	#define ASYM_BARRIER_ARCH_RELAX() ((void)0) /* HEY, COMPILER. DO NOT OPTIMIZE THIS! */
 	#define ASYM_BARRIER_CACHE_ALIGNED
 #endif
