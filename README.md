@@ -1,6 +1,7 @@
 <!-- SPDX-License-Identifier:	MIT -->
 
 # asym-barrier
+[![Build Status](https://travis-ci.com/Revimal/asym-barrier.svg?branch=master)](https://travis-ci.com/Revimal/asym-barrier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Language: C11](https://img.shields.io/badge/Language-C11-blue.svg)](https://www.iso.org/standard/57853.html)
 [![Header-only library](https://img.shields.io/badge/Header--only_library-green.svg)](https://en.wikipedia.org/wiki/Header-only)

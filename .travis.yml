@@ -2,11 +2,8 @@ language: c
 
 matrix:
   include:
-    arch:
-      - amd64
-      - ppc64le
-      - arm64
     - os: linux
+      arch: amd64
       dist: trusty
       sudo: false
       compiler: gcc
@@ -17,18 +14,44 @@ matrix:
           packages:
             - gcc-4.9
         env: COMPILER=gcc-4.9
-      - os: linux
-        dist: trusty
-        sudo: false
-        compiler: clang
-        addons:
-          apt:
-            sources:
-              - ubuntu-toolchain-r-test
-              - llvm-toolchain-3.6
-            packages:
-              - clang-3.6
-          env: COMPILER=clang-3.6
+    - os: linux
+      arch: amd64
+      dist: trusty
+      sudo: false
+      compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-3.6
+          packages:
+            - clang-3.6
+        env: COMPILER=clang-3.6
+    - os: linux
+      arch: arm64
+      dist: trusty
+      sudo: false
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gcc-4.9
+        env: COMPILER=gcc-4.9
+    - os: linux
+      arch: arm64
+      dist: trusty
+      sudo: false
+      compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-3.6
+          packages:
+            - clang-3.6
+        env: COMPILER=clang-3.6
 
 script:
   - ./autotest-linux.sh
