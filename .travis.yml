@@ -1,57 +1,23 @@
 language: c
 
-matrix:
+jobs:
   include:
     - os: linux
       arch: amd64
-      dist: trusty
-      sudo: false
+      dist: xenial
       compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-4.9
-        env: COMPILER=gcc-4.9
     - os: linux
       arch: amd64
-      dist: trusty
-      sudo: false
+      dist: xenial
       compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-3.6
-          packages:
-            - clang-3.6
-        env: COMPILER=clang-3.6
     - os: linux
       arch: arm64
-      dist: trusty
-      sudo: false
+      dist: xenial
       compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - gcc-4.9
-        env: COMPILER=gcc-4.9
     - os: linux
       arch: arm64
-      dist: trusty
-      sudo: false
+      dist: xenial
       compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-3.6
-          packages:
-            - clang-3.6
-        env: COMPILER=clang-3.6
 
 script:
   - ./autotest-linux.sh
