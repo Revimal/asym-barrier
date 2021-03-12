@@ -80,15 +80,15 @@ static void * synced_wait_fn(void *arg)
 	while (!synced_exit_flag)
 	{
 		asym_barrier_check(barrier);
-		if (local_count < unsafe_update_count)
+		if (local_count < synced_update_count)
 		{
 			local_count++;
 			ASYM_BARRIER_ARCH_RELAX();
-			if (local_count < (unsafe_update_count - 1))
+			if (local_count < (synced_update_count - 1))
 			{
 				local_count++;
 				(void)atomic_fetch_add_explicit(
-						&unsafe_result_count, 1, memory_order_seq_cst);
+						&synced_result_count, 1, memory_order_seq_cst);
 			}
 		}
 	}
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
 
 	asym_barrier_init(&asym_barrier, TEST_BARRIER_THREADS);
 
-	if (pthread_create(&synced_updater, NULL, &synced_update_fn, NULL) < 0)
+	if (pthread_create(&synced_updater, NULL, &synced_update_fn, &asym_barrier) < 0)
 	{
 		perror("Synced updater create:");
 		exit(-1);
@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
 	for (thread_idx = 0; thread_idx < TEST_BARRIER_THREADS; ++thread_idx)
 	{
 		if (pthread_create(&synced_waiters[thread_idx],
-					NULL, &synced_wait_fn, NULL) < 0)
+					NULL, &synced_wait_fn, &asym_barrier) < 0)
 		{
 			perror("Synced waiter create:");
 			exit(-1);
