@@ -7,7 +7,13 @@ mkdir autotest && cd autotest
 
 echo "[INFO] Preparing test cases."
 gcc -o test_barrier ../test_barrier.c -lpthread
+if [ $? -ne 0 ]
+then
+	echo "[ERROR] Test case preparation failed." >&2
+	exit 1
+fi
 
+echo "[INFO] THREAD = $(grep -c ^processor /proc/cpuinfo)"
 echo "[INFO] BINARY = $(ls -al | grep test_barrier | awk -F ' ' '{print $1}')"
 
 echo "[INFO] Running test cases."

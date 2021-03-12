@@ -9,7 +9,7 @@
 #include "asym_barrier.h"
 #include "symm_barrier.h"
 
-#define TEST_BARRIER_THREADS 3
+#define TEST_BARRIER_THREADS 2
 #define TEST_BARRIER_TESTCNT 10000000
 
 static unsigned unsafe_exit_flag;
