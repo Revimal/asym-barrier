@@ -14,6 +14,7 @@ The 'asym-barrier' is a synchrounous method that is consisted of a single update
 * Synchronize per-core data to a modification that needs global visibility.
 * Guarantee the MT-safety by pending all threads during a critical subroutine.
 * Emulate the SPMC behavior on a data structure which not considered for the multiprocessing.
+* Implement the thread barrier (Reference the example code: 'symm_barrier.h').
 * And so on...
 
 ---
@@ -107,7 +108,7 @@ This library uses a C11 standard feature named 'ISO/IEC 9899:2011 Atomics' so mo
 **DISCLAIMER: Never tested on 32-bit environments.**
 
 #### List of architectures that support efficient CPU relaxing
-* x86 (since Pentium4): defines `ASYM_BARRIER_ARCH_X86` before you include the library header.
+* x86 (since Pentium4): define `ASYM_BARRIER_ARCH_X86` before you include the library header.
 * ARM (since ARMv6K): define `ASYM_BARRIER_ARCH_ARM` before you include the library header.
 * PPC: define `ASYM_BARRIER_ARCH_PPC` before you include the library header.
 * MIPS: define `ASYM_BARRIER_ARCH_MIPS` before you include the library header.
