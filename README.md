@@ -117,9 +117,7 @@ This library uses a C11 standard feature named 'ISO/IEC 9899:2011 Atomics' so mo
 ---
 
 ## Is it works well?
-You can test this library by compiling and executing the 'test_barrier.c'.
-
-It uses the pthread for the MT-safety testing so please pass the appropriate compile flag which valid to the compiler you use.
+If you work on a Linux distribution, you can test this library easily by executing the shell script: 'autotest-linux.sh'.
 
 ---
 
