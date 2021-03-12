@@ -29,8 +29,8 @@ The 'asym-barrier' is a synchrounous method that is consisted of a single update
 8. Concurrently, each waiter threads increase the 'synced-count' by 1, then spinning until the 'synced-count' being 0.
 9. The updater thread spins until the 'synced-count' equals the number of waiter threads when it reaches a 'commit-point'.
 10. If the updater thread satisfied the condition to break the spinning, it sets the 'synced-count' as the 0.
-11. The increment action of the 'statement 7' makes the updater thread advance from 'statement 8' to 'statement 9'.
-12. The zeroing action of 'statement 9' makes the waiter thread escapes from spinning scribed in 'statement 7'.
+11. The increment action of the 'statement 8' makes the updater thread advance from 'statement 9' to 'statement 10'.
+12. The zeroing action of 'statement 10' makes the waiter thread escapes from spinning scribed in 'statement 8'.
 13. By the above two interactions, all the threads are escaped from spinning.
 14. At this point, both the 'waiting-count' and 'synced-count' is restored as 0, and all threads start continuing their control flow; we call this 'the period has committed'.
 
