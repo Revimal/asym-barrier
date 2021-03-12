@@ -13,8 +13,15 @@ then
 	exit 1
 fi
 
-echo "[INFO] THREAD = $(grep -c ^processor /proc/cpuinfo)"
+ASYMB_CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
+echo "[INFO] THREAD = $ASYMB_CPU_COUNT"
 echo "[INFO] BINARY = $(ls -al | grep test_barrier | awk -F ' ' '{print $1}')"
+
+if [ $ASYMB_CPU_COUNT -lt 4 ]
+then
+	echo "[INFO] Escaped."
+	exit 0
+fi
 
 echo "[INFO] Running test cases."
 ASYMB_TC_RESULTS=($(./test_barrier | grep -v "RESULT" | grep -v "UNSAFE" | awk -F ' ' '{print $2}' | sed 's/\///'))
