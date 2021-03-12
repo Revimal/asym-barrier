@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Autotest files
+autotest/
+
+# Miscellaneous files
+tags
