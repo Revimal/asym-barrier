@@ -124,9 +124,9 @@ The following results were measured with the customized version of [rwl-bench](h
 
 ![Benchmark Result Plot](PERFORMANCE.png)
 
-CPU: Intel(R) Xeon(R) CPU E5-2680 v4 (2.40 GHz, 35MB Cache) x2 NUMA
-RAM: DDR-4 2400MT/s 8192MB x16
-SYS: Linux 4.15.0-101-generic (Ubuntu 18.04.4 LTS, AMD64, SMP)
+* CPU: Intel(R) Xeon(R) CPU E5-2680 v4 (2.40 GHz, 35MB Cache) x2 NUMA
+* RAM: DDR-4 2400MT/s 8192MB x16
+* SYS: Linux 4.15.0-101-generic (Ubuntu 18.04.4 LTS, AMD64, SMP)
 
 ---
 
