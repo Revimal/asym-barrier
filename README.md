@@ -7,7 +7,12 @@
 [![Header-only library](https://img.shields.io/badge/Header--only_library-green.svg)](https://en.wikipedia.org/wiki/Header-only)
 
 ## What is the 'asym-barrier'?
-The 'asym-barrier' is a synchrounous method that is consisted of a single updater and multiple waiters.
+A simple header-only library that can replace the traditional reader-writer lock for the exceptional case when only one single writer thread exists.
+
+Focused on reducing reader-side overheads; get the reader-lock can be replaced with single memory access to an atomic variable with the relaxed memory ordering.
+On the other hand, its performance may be worse than the traditional reader-writer lock when in environments with frequent modifications.
+
+I hope it helps people who have the same concern about reducing the reader-lock acquirement cost under high contention.
 
 ---
 
