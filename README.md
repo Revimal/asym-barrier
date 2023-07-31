@@ -82,7 +82,7 @@ void updater_func(void *arg)
 
 	while (1) {
 		/* synchornized behavior (refer comments on 'asym_barrier_update()') */
-		asym_barrier_check(abptr, 1);
+		asym_barrier_update(abptr, 1);
 		/* do somthing... */
 		asym_barrier_commit(abptr);
 	}
